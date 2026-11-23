@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabelo <irabelo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: irabelo <irabelo@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 18:45:01 by irabelo           #+#    #+#             */
-/*   Updated: 2026/10/20 11:39:49 by irabelo          ###   ########.fr       */
+/*   Updated: 2026/11/23 19:15:29 by irabelo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@ void	ft_putchar(char c);
 
 static void	ft_putstr(const char *str)
 {
-	int	i;
+	int	offset;
 
-	i = 0;
-	while (str[i])
-		ft_putchar(str[i++]);
+	offset = 0;
+	while (str[offset])
+	{
+		ft_putchar(str[offset]);
+		offset++;
+	}
 }
 
 int	main(int argc, char **argv)
 {
-	int	i;
+	int	offset;
 
-	if (argc > 1)
+	offset = 1;
+	while (offset < argc)
 	{
-		i = 1;
-		while (i < argc)
-		{
-			ft_putstr(argv[i]);
-			ft_putchar('\n');
-			i++;
-		}
+		ft_putstr(argv[offset]);
+		ft_putchar('\n');
+		offset++;
 	}
 	return (0);
 }

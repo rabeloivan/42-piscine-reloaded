@@ -3,23 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabelo <irabelo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: irabelo <irabelo@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 16:49:45 by irabelo           #+#    #+#             */
-/*   Updated: 2026/10/19 16:51:03 by irabelo          ###   ########.fr       */
+/*   Updated: 2026/11/22 00:37:43 by irabelo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	int	i;
+	int	offset;
 
-	i = 0;
-	while (s1[i] || s2[i])
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
-	}
-	return (0);
+	offset = 0;
+	while (s1[offset] && s1[offset] == s2[offset])
+		offset++;
+	return ((unsigned char)s1[offset] - (unsigned char)s2[offset]);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabelo <irabelo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: irabelo <irabelo@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 11:33:37 by irabelo           #+#    #+#             */
-/*   Updated: 2026/10/20 11:40:13 by irabelo          ###   ########.fr       */
+/*   Updated: 2026/11/23 19:14:29 by irabelo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,34 @@
 
 static int	ft_strlen(const char *str)
 {
-	int	i;
+	int	len;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }
 
 static void	ft_strcpy(char *dst, const char *src)
 {
-	int	i;
+	int	offset;
 
-	i = 0;
-	while (src[i])
+	offset = 0;
+	while (src[offset])
 	{
-		dst[i] = src[i];
-		i++;
+		dst[offset] = src[offset];
+		offset++;
 	}
-	dst[i] = '\0';
+	dst[offset] = '\0';
 }
 
 char	*ft_strdup(char *src)
 {
-	int		src_len;
+	int		len;
 	char	*dup;
 
-	src_len = ft_strlen(src);
-	dup = (char *)malloc(src_len + 1 * sizeof(char));
+	len = ft_strlen(src);
+	dup = malloc(len + 1);
 	if (!dup)
 		return (NULL);
 	ft_strcpy(dup, src);

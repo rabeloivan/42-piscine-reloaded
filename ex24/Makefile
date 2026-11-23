@@ -3,31 +3,27 @@ NAME		= libft.a
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 
-SRCS_DIR	= srcs
-INC_DIR		= includes
+AR			= ar rcs
+RM			= rm -f
 
-SRCS		= ft_putchar.c \
-			  ft_putstr.c \
-			  ft_strcmp.c \
-			  ft_strlen.c \
-			  ft_swap.c
+SRCS		= $(addprefix srcs/, $(addsuffix .c, \
+			  ft_putchar ft_putstr ft_strcmp ft_strlen ft_swap))
 
-SRC			= $(addprefix $(SRCS_DIR)/, $(SRCS))
-OBJS		= $(SRC:.c=.o)
+OBJS		= $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $@ $^
+	$(AR) $@ $^
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -I./includes/ -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 

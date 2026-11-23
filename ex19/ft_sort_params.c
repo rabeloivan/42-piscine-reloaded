@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_params.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabelo <irabelo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: irabelo <irabelo@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 11:06:58 by irabelo           #+#    #+#             */
-/*   Updated: 2026/10/20 11:40:05 by irabelo          ###   ########.fr       */
+/*   Updated: 2026/11/23 19:15:49 by irabelo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,64 +14,61 @@ void	ft_putchar(char c);
 
 static int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	i;
+	int	offset;
 
-	i = 0;
-	while (s1[i] || s2[i])
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
-	}
-	return (0);
+	offset = 0;
+	while (s1[offset] && s1[offset] == s2[offset])
+		offset++;
+	return ((unsigned char)s1[offset] - (unsigned char)s2[offset]);
 }
 
 static void	ft_putstr(const char *str)
 {
-	int	i;
+	int	offset;
 
-	i = 0;
-	while (str[i])
-		ft_putchar(str[i++]);
+	offset = 0;
+	while (str[offset])
+	{
+		ft_putchar(str[offset]);
+		offset++;
+	}
 }
 
 static void	ft_print_args(int argc, char **argv)
 {
-	int	i;
+	int	offset;
 
-	i = 1;
-	while (i < argc)
+	offset = 1;
+	while (offset < argc)
 	{
-		ft_putstr(argv[i++]);
+		ft_putstr(argv[offset]);
 		ft_putchar('\n');
+		offset++;
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	int		i;
-	int		j;
+	int		offset;
+	int		next;
 	char	*tmp;
 
-	if (argc > 1)
+	offset = 1;
+	while (offset < argc)
 	{
-		i = 1;
-		while (i < argc)
+		next = offset + 1;
+		while (next < argc)
 		{
-			j = i + 1;
-			while (j < argc)
+			if (ft_strcmp(argv[offset], argv[next]) > 0)
 			{
-				if (ft_strcmp(argv[i], argv[j]) > 0)
-				{
-					tmp = argv[i];
-					argv[i] = argv[j];
-					argv[j] = tmp;
-				}
-				j++;
+				tmp = argv[offset];
+				argv[offset] = argv[next];
+				argv[next] = tmp;
 			}
-			i++;
+			next++;
 		}
-		ft_print_args(argc, argv);
+		offset++;
 	}
+	ft_print_args(argc, argv);
 	return (0);
 }

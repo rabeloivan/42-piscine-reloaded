@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabelo <irabelo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: irabelo <irabelo@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 15:44:52 by irabelo           #+#    #+#             */
-/*   Updated: 2026/10/19 15:45:19 by irabelo          ###   ########.fr       */
+/*   Updated: 2026/11/22 00:44:14 by irabelo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@ void	ft_putchar(char c);
 
 void	ft_print_numbers(void)
 {
-	char	c;
+	char	digit;
 
-	c = '0';
-	while (c <= '9')
-		ft_putchar(c++);
+	digit = '0';
+	while (digit <= '9')
+	{
+		ft_putchar(digit);
+		digit++;
+	}
 }
